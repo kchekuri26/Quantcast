@@ -4,16 +4,23 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 
+/**
+ * Tests the entire program for correct output.
+ *
+ * @author khushal
+ */
 public class SystemTests {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
+    /* Setting the std. output to output stream before test so that we can check for correct output */
     @BeforeEach
     void setUp() {
         System.setOut(new PrintStream(outContent));
     }
 
+    /* Restore std. output to System,out after the test */
     @AfterEach
     public void restoreStreams() {
         System.setOut(originalOut);

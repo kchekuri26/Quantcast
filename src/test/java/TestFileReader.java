@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Tests the FileReader class
+ *
+ * @author khushal
+ */
 public class TestFileReader {
 
     public static List<CookieInfo> getCookieInfoList() {
@@ -33,13 +38,20 @@ public class TestFileReader {
     void testCorrectRead() {
         List<CookieInfo> expected = getCookieInfoList();
         try {
-            List<CookieInfo> actual = FileReader.getCookieInfos(Paths.get("src/test/resources/testFile.csv"));
+            List<CookieInfo> actual = FileReader.getCookieInfos(Paths.get("src/test/resources/test.csv"));
             Assertions.assertTrue(expected.size() == actual.size() && equalElements(expected, actual));
         } catch (IOException e) {
             Assertions.fail("IOException", e);
         }
     }
 
+    /**
+     * Checks if the expected and actual list have the same CookieInfo elements.
+     *
+     * @param expected the expected list
+     * @param actual   the actual list
+     * @return true if same elements. Else false.
+     */
     private boolean equalElements(List<CookieInfo> expected, List<CookieInfo> actual) {
         for (int i = 0; i < expected.size(); i++) {
             if (!expected.get(i).getCookie().equals(actual.get(i).getCookie()) || !expected.get(i).getDate().equals(actual.get(i).getDate())) {

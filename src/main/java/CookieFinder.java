@@ -17,9 +17,11 @@ public class CookieFinder {
      * @return list of most active cookie names
      */
     public static List<String> getMostActiveCookies(List<CookieInfo> cookieInfos, String date) {
+        /* Key = cookie name and value = frequency */
         HashMap<String, Integer> map = new HashMap<>();
         int maxFreq = 0;
         for (CookieInfo cookieInfo : cookieInfos) {
+            /* Check only until the given date. No need to loop over older dates as the given log file is sorted */
             if (date.compareTo(cookieInfo.getDate()) > 0) {
                 break;
             }

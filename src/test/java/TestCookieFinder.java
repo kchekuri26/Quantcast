@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Tests the CookieFinder class.
+ *
+ * @author khushal
+ */
 public class TestCookieFinder {
 
     @Test

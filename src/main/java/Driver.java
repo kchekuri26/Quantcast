@@ -25,8 +25,7 @@ public class Driver {
         }
 
         try {
-            List<CookieInfo> cookieInfos = FileReader.getCookieInfos(Paths.get(args[0]));
-            List<String> cookies = CookieFinder.getMostActiveCookies(cookieInfos, args[2]);
+            List<String> cookies = CookieFinder.getMostActiveCookies(FileReader.getCookieInfos(Paths.get(args[0])), args[2]);
             for (String cookie : cookies) {
                 System.out.println(cookie);
             }

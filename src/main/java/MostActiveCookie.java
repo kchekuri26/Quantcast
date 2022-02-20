@@ -31,8 +31,12 @@ public class MostActiveCookie {
 
         try {
             List<String> cookies = CookieFinder.getMostActiveCookies(FileReader.getCookieInfos(Paths.get(args[0])), args[2]);
-            for (String cookie : cookies) {
-                System.out.println(cookie);
+            if (cookies.isEmpty()) {
+                System.out.println("No cookies found");
+            } else {
+                for (String cookie : cookies) {
+                    System.out.println(cookie);
+                }
             }
         } catch (IOException e) {
             System.err.println("Not able to read " + args[0]);

@@ -51,7 +51,7 @@ public class SystemTests {
     void testZeroOutputs() {
         String[] args = {"test.csv", "-d", "2018-12-06"};
         MostActiveCookie.main(args);
-        Assertions.assertEquals("", outContent.toString().trim());
+        Assertions.assertEquals("No cookies found", outContent.toString().trim());
     }
 
 }

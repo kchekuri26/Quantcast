@@ -2,7 +2,12 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Driver {
+/**
+ * Class responsible for parsing the command line arguments and printing out the results.
+ *
+ * @author khushal
+ */
+public class MostActiveCookie {
 
     public static final String IMPROPER_INPUT_ERROR = "Improper input. Correct format: filename.csv -d YYYY-MM-DD";
     public static final String IMPROPER_FILE_FORMAT_ERROR = "Improper file format. Correct format: .csv";

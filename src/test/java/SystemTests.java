@@ -30,7 +30,7 @@ public class SystemTests {
     @DisplayName("Check for single output")
     void testSingleOutput() {
         String[] args = {"test.csv", "-d", "2018-12-09"};
-        Driver.main(args);
+        MostActiveCookie.main(args);
         Assertions.assertEquals("AtY0laUfhglK3lC7", outContent.toString().trim());
     }
 
@@ -38,7 +38,7 @@ public class SystemTests {
     @DisplayName("Check for multiple outputs")
     void testMultipleOutputs() {
         String[] args = {"test.csv", "-d", "2018-12-08"};
-        Driver.main(args);
+        MostActiveCookie.main(args);
         String[] expected = {"SAZuXPGUrfbcn5UA", "4sMM2LxV07bPJzwf", "fbcn5UAVanZf6UtG"};
         String[] actual = outContent.toString().trim().split("\\R");
         Arrays.sort(expected);
@@ -50,7 +50,7 @@ public class SystemTests {
     @DisplayName("Check for no outputs")
     void testZeroOutputs() {
         String[] args = {"test.csv", "-d", "2018-12-06"};
-        Driver.main(args);
+        MostActiveCookie.main(args);
         Assertions.assertEquals("", outContent.toString().trim());
     }
 

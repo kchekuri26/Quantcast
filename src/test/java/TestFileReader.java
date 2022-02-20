@@ -6,10 +6,21 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class TestFileReader {
+
+    public static List<CookieInfo> getCookieInfoList() {
+        CookieInfo info1 = new CookieInfo("AtY0laUfhglK3lC7", "2018-12-09");
+        CookieInfo info2 = new CookieInfo("SAZuXPGUrfbcn5UA", "2018-12-09");
+        CookieInfo info3 = new CookieInfo("5UAVanZf6UtGyKVS", "2018-12-09");
+        CookieInfo info4 = new CookieInfo("AtY0laUfhglK3lC7", "2018-12-09");
+        CookieInfo info5 = new CookieInfo("SAZuXPGUrfbcn5UA", "2018-12-08");
+        CookieInfo info6 = new CookieInfo("4sMM2LxV07bPJzwf", "2018-12-08");
+        CookieInfo info7 = new CookieInfo("fbcn5UAVanZf6UtG", "2018-12-08");
+        CookieInfo info8 = new CookieInfo("4sMM2LxV07bPJzwf", "2018-12-07");
+        return new ArrayList<>(Arrays.asList(info1, info2, info3, info4, info5, info6, info7, info8));
+    }
 
     @Test
     @DisplayName("Check for Incorrect file")
@@ -20,15 +31,7 @@ public class TestFileReader {
     @Test
     @DisplayName("Check for correct reading")
     void testCorrectRead() {
-        CookieInfo info1 = new CookieInfo("AtY0laUfhglK3lC7", "2018-12-09");
-        CookieInfo info2 = new CookieInfo("SAZuXPGUrfbcn5UA", "2018-12-09");
-        CookieInfo info3 = new CookieInfo("5UAVanZf6UtGyKVS", "2018-12-09");
-        CookieInfo info4 = new CookieInfo("AtY0laUfhglK3lC7", "2018-12-09");
-        CookieInfo info5 = new CookieInfo("SAZuXPGUrfbcn5UA", "2018-12-08");
-        CookieInfo info6 = new CookieInfo("4sMM2LxV07bPJzwf", "2018-12-08");
-        CookieInfo info7 = new CookieInfo("fbcn5UAVanZf6UtG", "2018-12-08");
-        CookieInfo info8 = new CookieInfo("4sMM2LxV07bPJzwf", "2018-12-07");
-        List<CookieInfo> expected = new ArrayList<>(Arrays.asList(info1, info2, info3, info4, info5, info6, info7, info8));
+        List<CookieInfo> expected = getCookieInfoList();
         try {
             List<CookieInfo> actual = FileReader.getCookieInfos(Paths.get("src/test/resources/testFile.csv"));
             Assertions.assertTrue(expected.size() == actual.size() && equalElements(expected, actual));
@@ -37,7 +40,7 @@ public class TestFileReader {
         }
     }
 
-    private static boolean equalElements(List<CookieInfo> expected, List<CookieInfo> actual) {
+    private boolean equalElements(List<CookieInfo> expected, List<CookieInfo> actual) {
         for (int i = 0; i < expected.size(); i++) {
             if (!expected.get(i).getCookie().equals(actual.get(i).getCookie()) || !expected.get(i).getDate().equals(actual.get(i).getDate())) {
                 return false;
